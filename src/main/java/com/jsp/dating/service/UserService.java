@@ -109,13 +109,16 @@ public class UserService {
 	public ResponseEntity<?> searchUserByEmail(String letters) {
 		
 		
-//		String emailLetters ="%";
-//		for(char letter : letters.toCharArray())
-//			emailLetters += letter;
-//		emailLetters +="%";
-//		
+		String emailLetters ="%";
+		for(char letter : letters.toCharArray())
+			emailLetters += letter + "%";
+		
+//		System.out.println("-------------------------------------------");
 //		System.out.println(emailLetters);
-		List<User> users = userDao.searchUserByEmail("%" + letters + "%");
+//		System.out.println("-------------------------------------------");
+		
+		
+		List<User> users = userDao.searchUserByEmail(emailLetters);
 		if(users.isEmpty())
 			return ResponseEntity.status(404).body("Users not found");
 		return ResponseEntity.ok(users);
