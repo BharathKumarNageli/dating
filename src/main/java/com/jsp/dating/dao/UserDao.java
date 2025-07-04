@@ -47,6 +47,14 @@ public class UserDao {
 		return userRepository.findByGender(gender);
 	}
 
+	public List<User> searchUserByName(String letters) {
+		return userRepository.searchUserByName(letters);
+	}
+	
+	public List<User> searchUserByEmail(String letters) {
+		return userRepository.searchUserByEmail(letters);
+	}
+
 	
 
 	

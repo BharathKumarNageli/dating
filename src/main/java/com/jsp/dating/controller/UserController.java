@@ -45,6 +45,20 @@ public class UserController {
 	
 	
 	
+	@GetMapping("/users/search/name/{letters}")
+	public ResponseEntity<?> serachUserByName(@PathVariable String letters){
+		return userService.searchUserByName(letters);
+	}
+	
+	
+	
+	@GetMapping("/users/search/email/{letters}")
+	public ResponseEntity<?> serachUserByEmail(@PathVariable String letters){
+		return userService.searchUserByEmail(letters);
+	}
+	
+	
+	
 	
 	
 	

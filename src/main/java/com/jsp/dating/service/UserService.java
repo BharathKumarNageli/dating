@@ -98,6 +98,28 @@ public class UserService {
 	
 	
 	
+	public ResponseEntity<?> searchUserByName(String letters) {
+		List<User> users = userDao.searchUserByName("%"+letters+"%");
+		if(users.isEmpty())
+			return ResponseEntity.status(404).body("Users not found");
+		return ResponseEntity.ok(users);
+	}
+	
+	
+	public ResponseEntity<?> searchUserByEmail(String letters) {
+		
+		
+//		String emailLetters ="%";
+//		for(char letter : letters.toCharArray())
+//			emailLetters += letter;
+//		emailLetters +="%";
+//		
+//		System.out.println(emailLetters);
+		List<User> users = userDao.searchUserByEmail("%" + letters + "%");
+		if(users.isEmpty())
+			return ResponseEntity.status(404).body("Users not found");
+		return ResponseEntity.ok(users);
+	}
 	
 	
 	
@@ -114,6 +136,8 @@ public class UserService {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found");
 		return ResponseEntity.ok(users);
 	}
+
+	
 
 	
 }
